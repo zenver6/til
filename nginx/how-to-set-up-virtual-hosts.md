@@ -2,13 +2,20 @@
 
 Environment : Cent OS
 
-## Create Server Block file for each domain in /etc/nginx/conf.d
+## Create Server Block file for each domain in /etc/nginx/conf.d/
 
 \*.conf file is valid
 
+Because included from `/etc/nginx/nginx.conf`
+
+```
+include /etc/nginx/conf.d/*.conf;
+```
+
+
 example foo.com.conf
 
-```php
+```
 server {
     listen       80;
     server_name  foo.com;
@@ -17,9 +24,13 @@ server {
 
     location / {
         root   /usr/share/nginx/foo.com;
-        index  index.html index.htm;
+        index  index.php index.html;
     }
 }
 ```
 
 ## restart nginx
+
+```
+sudo systemctl restart nginx
+```
